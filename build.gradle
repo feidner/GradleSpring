@@ -1,0 +1,48 @@
+group 'hfe'
+version '1.0-SN'
+
+apply plugin: 'java'
+apply plugin: 'war'
+//apply plugin: 'org.akhikhl.gretty'
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+sourceCompatibility = 1.8
+
+repositories {
+   mavenCentral()
+/*    maven {
+        url "http://md17gp1c.ww002.siemens.net:16100/archiva/repository/internal/"
+    }*/
+}
+
+dependencies {
+    def springVersion = "4.3.5.RELEASE"
+
+    compile 'javax.inject:javax.inject:1'
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-web:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "org.springframework:spring-beans:${springVersion}"
+    compile "org.springframework:spring-websocket:${springVersion}"
+    compile "org.springframework:spring-messaging:${springVersion}"
+    compile "org.springframework:spring-jdbc:${springVersion}"
+    compile "org.springframework:spring-orm:${springVersion}"
+    compile "org.hibernate:hibernate-core:5.2.1.Final"
+
+    testCompile "com.h2database:h2:1.4.193"
+    testCompile "org.apache."
+    testCompile "org.springframework:spring-test:${springVersion}"
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.apache.httpcomponents:httpclient:4.5.2'
+    testCompile 'com.google.code.gson:gson:2.7'
+    testCompile 'commons-io:commons-io:2.5'
+    testCompile 'org.testng:testng:6.10'
+
+}
+
+gretty {
+    //servletContainer = 'jetty8'
+    //contextPath = 'out/exploded'
+    loggingLevel = 'INFO'
+    // ... many more properties
+}
